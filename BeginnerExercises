@@ -1,0 +1,36 @@
+# 1 - Visit Card
+# Exercise for:
+#     input / output
+#     variables
+#
+# Exercise Description
+#     Write a program which ask for name, surname, birthdate, city of living.
+#     Then program prints visit card
+#
+# 2 - Format visit card nicely
+# Exercise for:
+#     string manipulation
+
+#             ------------------------------------
+#            | Name and surname: Richard Feynman  |
+#        R.F | Birth date: 11-05-1918             |
+#            | City: Los Angeles                  |
+#             ------------------------------------
+#     (R.F. is initials)
+# 3 -  Print age in years and days
+# Exercise for:
+#      numbers manipulation
+#
+# 4 - Validate data
+# 
+
+
+name = input("Name: ")
+surname = input("Surname: ")
+birthDate = input("Date of birth (dd-mm-rrrr): ")
+city = input("City: ")
+
+print(f"Imię i Nazwisko:     {name} {surname}")
+print(f"Data urodzenia:      {birthDate}")
+print(f"Miasto zamieszkania: {city}")
+
