@@ -3,7 +3,7 @@ Exercise for:
     input / output
     variables
 
-Exercise Description
+Exercise description:
     Write a program which ask for name, surname, birthdate, city of living.
     Then program prints visit card
 
@@ -13,6 +13,7 @@ Exercise for:
     string manipulation (initials, taking out day, month, year form string)
     loop (line)
 
+Exercise description:
             ------------------------------------
            | Name and surname: Richard Feynman  |
        R.F | Birth date: 11-05-1918             |
@@ -20,8 +21,43 @@ Exercise for:
             ------------------------------------
     (R.F. is initials)
 
-3 -  Print age in years and days
+3 - validate birthday date
 Exercise for:
-     numbers manipulation
+    functions
 
-4 - Validate data
+Exercise description:
+    create function for validating birthday
+    modify program to use functions
+
+4 - Menu
+Exercise for:
+    loops
+    functions
+
+Exercise description:
+    Add menu to program.
+    Available options
+        - modify name, surname, birth date or city
+        - show age in years
+        - show age in days
+
+5 - Visit Card List
+Exercise for:
+    Lists
+    classes
+
+Exercise description:
+    Modify menu:
+        - show visit card list (shows list of name and surname
+        - show visit card by id
+        - show visid cards by name, surname, birth date or city
+        - modify visit card (by id)
+        - delete visit card (by id)
+
+6 - Save visit cards to file
+Exercise for:
+    files
+    json
+
+Exercise description:
+    Save visit card list to json
