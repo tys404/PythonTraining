@@ -24,6 +24,7 @@ Exercise description:
 3 - validate birthday date
 Exercise for:
     functions
+    regex
 
 Exercise description:
     create function for validating birthday
@@ -33,6 +34,8 @@ Exercise description:
 Exercise for:
     loops
     functions
+    global
+    datetime
 
 Exercise description:
     Add menu to program.
