@@ -57,10 +57,9 @@ Exercise description:
         - modify visit card (by id)
         - delete visit card (by id)
 
-6 - search visit cards
-    add option to search cards by name, surname, date or city
+6 -
 
-7 - Save visit cards to database - use Django?
+? - Save visit cards to database - use Django?
 Exercise for:
     databases
 
