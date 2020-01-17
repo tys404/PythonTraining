@@ -50,6 +50,7 @@ Exercise for:
     classes
 
 Exercise description:
+    options from previous exercise show in visit card
     Modify menu:
         - show visit card list (shows list of name and surname
         - show visit card by id
@@ -57,10 +58,12 @@ Exercise description:
         - modify visit card (by id)
         - delete visit card (by id)
 
-6 - Save visit cards to file
+6 - Save visit cards to database - use Django?
 Exercise for:
-    files
-    json
+    databases
 
-Exercise description:
-    Save visit card list to json
+
+? - something for datatypes
+? - something for math
+? - something for logic
+? - something for exceptions

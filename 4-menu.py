@@ -164,7 +164,3 @@ while True:
     choice = input("Your choice: ")
     run_choice(choice)
     print()
-
-
-
-
