@@ -17,9 +17,7 @@ class UI:
         print()
 
     def get_choice(self):
-        self.choice=""
-        while not Validator.choice(self.choice):
-            self.choice = input("Your choice: ")
+        self.choice = self.get_validated_value("Your choice ", Validator.action)
 
     def run_action(self):
         switcher = {
@@ -37,7 +35,7 @@ class UI:
         print("--- new card ---")
         name = input("Name: ")
         surname = input("Surname: ")
-        birth_date = self.get_birth_date()
+        birth_date = self.get_validated_value("Date of birth: ", Validator.date)
         city = input("City: ")
         self.visit_card_manager.add_card(name, surname, city, birth_date)
 
@@ -54,11 +52,16 @@ class UI:
 
     def edit_visit_card(self):
         index = input("Index of card to edit: ")
+
         print("  Parameters: ")
         for parameter in Parameter:
             print(f"    {parameter.name}")
-        param = input("Parameter to edit: ")
-        value = input("New value: ")
+
+        param = self.get_validated_value("Parameter to edit: ", Validator.parameter)
+        if param == Parameter.BIRTHDAY.name:
+            value = self.get_validated_value("Date of birth (dd-mm-rrrr): ", Validator.date)
+        else:
+            value = input("New value: ")
 
         self.visit_card_manager.edit_card(int(index), param, value)
 
@@ -66,9 +69,12 @@ class UI:
         index = input("Index of card to delete: ")
         self.visit_card_manager.delete_card(int(index))
 
-    def get_birth_date(self):
-        date = ""
-        while not Validator.date(date):
-            date = input("Date of birth (dd-mm-rrrr): ")
+    @staticmethod
+    def get_validated_value(prompt, validation_func):
+        param = ""
 
-        return date
+        while not validation_func(param):
+            param = input(prompt)
+
+        return param
+

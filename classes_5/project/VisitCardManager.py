@@ -18,7 +18,6 @@ class VisitCardManager:
     def add_card(self, name, surname, birth_date_input, city):
         card = VisitCard(name, surname, birth_date_input, city)
         self.card_list.append(card)
-        print("added correctly")
 
     def get_names_list(self):
         name_list = []
