@@ -44,7 +44,7 @@ class TestGetNamesList(TestVisitCardManager):
         self.assertEqual(name_list[3], "Richard3")
 
 
-class TestEditItem(TestVisitCardManager):
+class TestEditCard(TestVisitCardManager):
     def test_edit_name(self):
         self.visit_card_manager.edit_card(0, Parameter.NAME, "John")
         self.visit_card_manager.edit_card(2, Parameter.NAME, "Felix")
@@ -82,7 +82,7 @@ class TestEditItem(TestVisitCardManager):
         self.assertEqual(self.visit_card_manager.card_list[3].city, "Los Angeles")
 
 
-class TestDelete(TestVisitCardManager):
+class TestDeleteCard(TestVisitCardManager):
     def test_delete_one(self):
         self.visit_card_manager.delete_card(0)
 
