@@ -54,11 +54,13 @@ Exercise description:
     Modify menu:
         - show visit card list (shows list of name and surname
         - show visit card by id
-        - show visid cards by name, surname, birth date or city
         - modify visit card (by id)
         - delete visit card (by id)
 
-6 - Save visit cards to database - use Django?
+6 - search visit cards
+    add option to search cards by name, surname, date or city
+
+7 - Save visit cards to database - use Django?
 Exercise for:
     databases
 
