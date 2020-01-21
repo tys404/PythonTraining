@@ -29,16 +29,11 @@ class VisitCardManager:
             print("invalid index")
             return
 
-        if parameter == Parameter.NAME or parameter == Parameter.NAME.name:
-            self.card_list[index].name = value
-        elif parameter == Parameter.SURNAME or parameter == Parameter.SURNAME.name:
-            self.card_list[index].surname = value
-        elif parameter == Parameter.BIRTHDAY or parameter == Parameter.BIRTHDAY.name:
-            self.card_list[index].birthday = value
-        elif parameter == Parameter.CITY or parameter == Parameter.CITY.name:
-            self.card_list[index].city = value
-        else:
+        if parameter not in Parameter.__members__:
             print("invalid parameter")
+            return
+
+        self.card_list[index].__dict__[parameter.lower()] = value
 
     def delete_card(self, index):
         if index > len(self.card_list):
