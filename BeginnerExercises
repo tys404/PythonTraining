@@ -50,9 +50,8 @@ Exercise for:
     classes
 
 Exercise description:
-    options from previous exercise show in visit card
     Modify menu:
-        - show visit card list (shows list of name and surname
+        - show visit card list (shows list of name and surname)
         - show visit card by id
         - modify visit card (by id)
         - delete visit card (by id)

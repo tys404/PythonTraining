@@ -1,26 +1,37 @@
 from .Validator import Validator
-from .VisitCardManager import Parameter
+from .VisitCardManager import Parameter, VisitCardManager
+from .VisitCardPrinter import VisitCardPrinter
+from .UI import UI
 
 
 class ActionRunner:
-    def __init__(self, visit_card_manager, ui):
-        self.visit_card_manager = visit_card_manager
-        self.ui = ui
+    def __init__(self, ):
+        self.manager = VisitCardManager()
+        self.printer = VisitCardPrinter()
+
+    def run(self, choice):
+        switcher = {
+            'N': self.new_visit_card,
+            'V': self.show_visit_card,
+            'L': self.show_list_of_visit_cards,
+            'E': self.edit_visit_card,
+            'D': self.delete_visit_card
+        }
+
+        func = switcher.get(choice, "invalid choice")
+        return func()
 
     def new_visit_card(self):
-        print("--- new card ---")
-        name = input("Name: ")
-        surname = input("Surname: ")
-        birth_date = self.ui.get_validated_value("Date of birth: ", Validator.date)
-        city = input("City: ")
-        self.visit_card_manager.add_card(name, surname, city, birth_date)
+        name, surname, birth_date_input, city = UI.get_new_visit_card_data()
+        self.manager.add_card(name, surname, birth_date_input, city)
 
     def show_visit_card(self):
-        index = input("Index of card to show: ")
-        self.visit_card_manager.show_card(int(index))
+        index = UI.get_index(self.manager.card_list)
+        card = self.manager.card_list[index]
+        self.printer.print(card)
 
     def show_list_of_visit_cards(self):
-        list_ = self.visit_card_manager.get_names_list()
+        list_ = self.manager.get_names_list()
 
         print("--- List of cards ---")
         for card in list_:
@@ -29,21 +40,21 @@ class ActionRunner:
         print()
 
     def edit_visit_card(self):
-        index = input("Index of card to edit: ")
-        self.ui.print_parameters()
-        param = self.ui.get_validated_value("Parameter to edit: ", Validator.parameter)
-
-        if param == Parameter.BIRTHDAY.name:
-            value = self.ui.get_validated_value("Date of birth (dd-mm-rrrr): ", Validator.date)
-        else:
-            value = input("New value: ")
-
-        self.visit_card_manager.edit_card(int(index), param, value)
-
-    def delete_visit_card(self):
-        if len(self.visit_card_manager.card_list) == 0:
+        if len(self.manager.card_list) == 0:
             print("Card list is empty\n")
             return
 
-        index = input("Index of card to delete: ")
-        self.visit_card_manager.delete_card(int(index))
+        index = UI.get_index(self.manager.card_list)
+        UI.print_parameters()
+        param = UI.get_param_to_edit()
+        value = UI.get_new_value(param)
+
+        self.manager.edit_card(index, param, value)
+
+    def delete_visit_card(self):
+        if len(self.manager.card_list) == 0:
+            print("Card list is empty\n")
+            return
+
+        index = UI.get_index(self.manager.card_list)
+        self.manager.delete_card(index)

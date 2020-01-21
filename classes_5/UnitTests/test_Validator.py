@@ -92,29 +92,45 @@ class DateValidation(TestValidator):
 
 
 class TestChoice(TestValidator):
-    def test_choice_correct(self):
-        choices = ['N', 'V', 'L', 'E', 'D']
+    def test_choices(self):
+        correct_choices = ['N', 'V', 'L', 'E', 'D']
 
-        for choice in choices:
-            self.assertTrue(self.validator.action(choice), f"{choice}")
+        for choice in correct_choices:
+            self.assertTrue(self.validator.menu_choice(choice), f"{choice}")
 
-    def test_choice_incorrect(self):
-        choices = ['n', 'v', 'l', 'e', 'd']
+        invalid_choices = ['n', 'v', 'l', 'e', 'd', 'NN', 'NV', '', 0, 1, ]
 
-        for choice in choices:
-            self.assertFalse(self.validator.action(choice), f"{choice}")
+        for choice in invalid_choices:
+            self.assertFalse(self.validator.menu_choice(choice), f"{choice}")
 
 
 class TestParams(TestValidator):
-    def test_parameter_correct(self):
+    def test_parameters(self):
         parameters = ["NAME", "SURNAME", "BIRTHDAY", "CITY"]
 
         for param in parameters:
-            self.assertTrue(self.validator.parameter(param), f"{param}")
+            self.assertTrue(self.validator.visit_card_parameter(param), f"{param}")
 
-    def test_parameter_incorrect(self):
         parameters = ["name", "surname", "birthday", "city"]
 
         for param in parameters:
-            self.assertFalse(self.validator.parameter(param), f"{param}")
+            self.assertFalse(self.validator.visit_card_parameter(param), f"{param}")
+
+
+class TestIndex(TestValidator):
+    def test_indexes(self):
+        correct_indexes = [0, 1, 2]
+        incorrect_indexes = [-1, 3]
+        invalid_indexes = ['a', "str", {}]
+        list_ = ['a', 'b', 'c']
+
+        for index_ in correct_indexes:
+            self.assertTrue(self.validator.index(index_, list_), f"{index_}")
+
+        for index_ in incorrect_indexes:
+            self.assertFalse(self.validator.index(index_, list_), f"{index_}")
+
+        for index_ in invalid_indexes:
+            self.assertFalse(self.validator.index(index_, list_), f"{index_}")
+
 

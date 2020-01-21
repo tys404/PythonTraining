@@ -10,7 +10,7 @@ class Validator:
 
     @staticmethod
     def date(date):
-        if not re.match(r"[0-3][0-9]-[0-3][0-9]-[1-2][0-9][0-9][0-9]", date):
+        if not re.match(r"[0-3][0-9]-[0-3][0-9]-[0-2][0-9][0-9][0-9]", date):
             return False
 
         months_31 = [1, 3, 5, 7, 8, 10, 12]
@@ -41,14 +41,18 @@ class Validator:
         return True
 
     @staticmethod
-    def action(choice):
-        if re.match(r"[NVLED]", choice):
-            return True
-        else:
+    def menu_choice(choice):
+        if (
+                not isinstance(choice, str) or
+                len(choice) > 1 or
+                not re.match(r"[NVLEDX]", choice)
+        ):
             return False
+        else:
+            return True
 
     @staticmethod
-    def parameter(param):
+    def visit_card_parameter(param):
         from ..project.VisitCardManager import Parameter
         is_valid = False
 
@@ -57,3 +61,23 @@ class Validator:
                 is_valid = True
 
         return is_valid
+
+    @staticmethod
+    def index(value, list_):
+        try:
+            value = int(value)
+        except (ValueError, TypeError):
+            return False
+
+        max_index = len(list_) - 1
+        if value < 0 or value > max_index:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def string_nonempty(value):
+        if not isinstance(value, str) or len(value) == 0:
+            return False
+        else:
+            return True
