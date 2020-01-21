@@ -1,7 +1,5 @@
 from enum import Enum
-
 from .VisitCard import VisitCard
-# from .VisitCardPrinter import VisitCardPrinter
 
 
 class Parameter(Enum):
@@ -14,7 +12,6 @@ class Parameter(Enum):
 class VisitCardManager:
     def __init__(self):
         self.card_list = []
-        # self.card_printer = VisitCardPrinter()
 
     def add_card(self, name, surname, birth_date_input, city):
         card = VisitCard(name, surname, birth_date_input, city)
@@ -49,10 +46,3 @@ class VisitCardManager:
             return
 
         del self.card_list[index]
-
-    # def show_card(self, index):
-    #     if index > len(self.card_list):
-    #         print("invalid index")
-    #         return
-    #
-    #     self.card_printer.print(self.card_list[index])
