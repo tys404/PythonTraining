@@ -1,7 +1,6 @@
-from .Validator import Validator
-from .VisitCardManager import Parameter, VisitCardManager
+from . import VisitCardUI as UI
+from .VisitCardManager import VisitCardManager
 from .VisitCardPrinter import VisitCardPrinter
-from .UI import UI
 
 
 class ActionRunner:
